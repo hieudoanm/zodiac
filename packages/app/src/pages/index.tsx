@@ -52,10 +52,10 @@ const HomePage: NextPage = () => {
     length: number.toString().length,
   });
 
-  const hideNumbers =
-    IGNORE_NUMBERS_3.includes(number) &&
-    IGNORE_NUMBERS_4.includes(number) &&
-    number < 100 &&
+  const showNumbers =
+    IGNORE_NUMBERS_3.includes(number) ||
+    IGNORE_NUMBERS_4.includes(number) ||
+    number < 100 ||
     number > 9999;
 
   useEffect(() => {
@@ -116,7 +116,7 @@ const HomePage: NextPage = () => {
               <p>has at least two different digits</p>
             </div>
           )}
-          {!hideNumbers &&
+          {!showNumbers &&
             numbers.map(
               ({ descending, ascending, result }: Routine, index: number) => {
                 return (
